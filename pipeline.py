@@ -1,5 +1,5 @@
 """
-DSN Bootcamp Qualification Hackathon 2026 (ML Track) — Final Submission Pipeline
+Faith Alabetutu's DSN Bootcamp Qualification Hackathon 2026 (ML Track) — Final Submission Pipeline
 ==================================================================================
 
 Predicts `total_sales` for each product-store row using CatBoost.
