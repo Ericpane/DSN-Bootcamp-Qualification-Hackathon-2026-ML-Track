@@ -1,4 +1,4 @@
-# DSN Bootcamp Qualification Hackathon 2026 — ML Track
+# Faith Alabetutu's DSN Bootcamp Qualification Hackathon 2026 Submission— ML Track
 
 Predicting `total_sales` for product-store combinations. Evaluation metric: RMSE.
 
@@ -38,13 +38,13 @@ This prints per-fold and mean CV RMSE, then trains a 5-model bagged ensemble
 
 The store/product aggregate features (e.g. "average price for this store")
 are recomputed separately for each CV fold using only that fold's training
-split — never the full training set and never validation rows. Computing
+split, never the full training set and never validation rows. Computing
 them once on the full dataset before splitting would let validation-row
 information leak into features the model uses to predict those same
 rows, silently inflating the reported CV score relative to real
 held-out performance. This was checked directly: the leakage-safe version
 of the pipeline scores 1074.79, essentially the same as the
-leakage-prone version (1073.36) — this dataset's aggregates weren't leaking
+leakage-prone version (1073.36), this dataset's aggregates weren't leaking
 meaningfully, but the check was necessary to confirm that rather than
 assume it.
 
@@ -65,13 +65,6 @@ honestly is documenting the dead ends, not just the thing that worked.
 | Smoothed target encoding on `product_code`/`store_code` | 1180+ | worse — overfits (median ~4 rows/product) |
 | LightGBM alone / CatBoost+LightGBM blend | 1181–1217 | worse |
 
-**Conclusion**: multiple independent approaches — including a completely
-separate from-scratch notebook someone else wrote, and a from-scratch
-deep-cleaning pass — converge on ~1073-1076 CV RMSE. This appears to be
-close to the practical floor for this dataset given the available features,
-not a modeling or cleaning failure. Public leaderboard scores (as of
-2 days before deadline) show the bulk of legitimate submissions clustered
-in the same 1065-1076 range, which supports this conclusion externally.
 
 ## Repo structure
 
@@ -79,8 +72,5 @@ in the same 1065-1076 range, which supports this conclusion externally.
 .
 ├── README.md
 ├── requirements.txt
-├── src/
-│   └── pipeline.py       # cleaning, feature engineering, CV, training, prediction
-├── data/                 # train.csv / test.csv (not committed — see .gitignore)
-└── output/               # generated submission.csv (not committed)
+├── pipeline.py                   
 ```
